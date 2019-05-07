@@ -33,7 +33,7 @@ public class Customer {
         }
         //add footer lines
         result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+        result += "You earned " + String.valueOf(getTotalRenterPoints()) + " frequent renter points";
         return result;
     }
     
@@ -43,6 +43,16 @@ public class Customer {
     	while(enum_rentals.hasMoreElements()) {
     		Rental each = (Rental)enum_rentals.nextElement();
     		result += each.getCharge();
+    	}
+    	return result;
+    }
+    
+    private int getTotalRenterPoints() {
+    	int result = 0;
+    	Enumeration enum_rentals = rentals.elements();
+    	while(enum_rentals.hasMoreElements()) {
+    		Rental each = (Rental)enum_rentals.nextElement();
+    		result += each.getFrequentRenterPoints();
     	}
     	return result;
     }
