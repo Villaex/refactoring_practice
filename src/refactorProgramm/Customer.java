@@ -27,7 +27,7 @@ public class Customer {
         while (enum_rentals.hasMoreElements()) {
             Rental each = (Rental) enum_rentals.nextElement();
             // add frequent renter points
-            frequentRenterPoints += each.getFrequentRenterPoints();
+            frequentRenterPoints += each.getMovie().getFrequentRenterPoints(each.getFrequentRenterPoints());
             //show figures for this rental
             result += "\t" + each.getMovie().getTitle()+ "\t" + "\t" + each.getDaysRented() + "\t" + String.valueOf(each.getMovie().getCharge(each.getDaysRented())) + "\n";
         }
@@ -65,7 +65,7 @@ public class Customer {
     	Enumeration enum_rentals = rentals.elements();
     	while(enum_rentals.hasMoreElements()) {
     		Rental each = (Rental)enum_rentals.nextElement();
-    		result += each.getFrequentRenterPoints();
+    		result += each.getMovie().getFrequentRenterPoints(each.getFrequentRenterPoints());
     	}
     	return result;
     }
